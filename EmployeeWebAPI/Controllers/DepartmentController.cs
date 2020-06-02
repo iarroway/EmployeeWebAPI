@@ -6,7 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Data;
 using EmployeeWebAPI.Models;
-
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace EmployeeWebAPI.Controllers
 {
@@ -18,7 +19,15 @@ namespace EmployeeWebAPI.Controllers
 
             string query = " select DepartmentID, DepartmentName from dbo.Departments";
 
-            using (var con)
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeAppDB"].ConnectionString))
+
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }
