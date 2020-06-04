@@ -29,5 +29,29 @@ namespace EmployeeWebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
+
+        public string Post(Department dep)
+        {
+            try
+            {
+                DataTable table = new DataTable();
+
+                string query = "insert into dbo.Departments (EmployeeName) values('" + dep.DepartmentName+"')";
+
+                using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeAppDB"].ConnectionString))
+
+                using (var cmd = new SqlCommand(query, con))
+                using (var da = new SqlDataAdapter(cmd))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    da.Fill(table);
+                }
+                return "Added successfully!";
+            }
+            catch (Exception ex)
+            {
+                return "Faild to Add!";
+            }
+        }
     }
 }

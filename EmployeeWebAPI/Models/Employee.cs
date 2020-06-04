@@ -12,7 +12,7 @@ namespace EmployeeWebAPI.Models
         public string EmployeeName { get; set; }
 
         public string Department { get; set; }
-        public string Mail { get; set; }
+        public string MailID { get; set; }
         public DateTime? DOJ { get; set; } 
     }
 }
