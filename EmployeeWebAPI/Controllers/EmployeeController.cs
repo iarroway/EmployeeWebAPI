@@ -102,7 +102,5 @@ namespace EmployeeWebAPI.Controllers
                 return "Faild to Delete!";
             }
         }
-
-
     }
 }
