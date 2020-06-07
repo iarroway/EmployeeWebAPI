@@ -52,7 +52,7 @@ namespace EmployeeWebAPI.Controllers
             }
             catch (Exception)
             {
-                return "Faild to Add!";
+                return "Failed to Add!";
             }
         }
 
@@ -75,9 +75,9 @@ namespace EmployeeWebAPI.Controllers
                 }
                 return "Updated successfully!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "Faild to Update!";
+                return "Failed to Update!";
             }
         }
 
@@ -99,9 +99,9 @@ namespace EmployeeWebAPI.Controllers
                 }
                 return "Deleted successfully!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "Faild to Delete!";
+                return "Failed to Delete!";
             }
         }
     }
